@@ -1,5 +1,5 @@
 import { Table } from '@chakra-ui/react';
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 interface BaseTableProps {
     headers: string[];
