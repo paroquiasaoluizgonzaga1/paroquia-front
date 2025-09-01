@@ -1,5 +1,5 @@
 import { HStack, Icon, Text } from '@chakra-ui/react';
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Tooltip } from '../ui/tooltip';
 

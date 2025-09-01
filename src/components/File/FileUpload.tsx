@@ -1,4 +1,4 @@
-import { FileUploadFileAcceptDetails, FileUploadFileRejectDetails } from '@chakra-ui/react';
+import { type FileUploadFileAcceptDetails, type FileUploadFileRejectDetails } from '@chakra-ui/react';
 import { toaster } from '../ui/toaster';
 import { FileUploadDropzone, FileUploadList, FileUploadRoot } from '../ui/file-upload';
 import { Field } from '../ui/field';

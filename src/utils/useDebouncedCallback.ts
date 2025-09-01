@@ -1,24 +1,24 @@
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback } from 'react';
 
-export function useDebouncedCallback(callback, delay) {
-  const timeoutRef = useRef(null);
+export function useDebouncedCallback(callback: any, delay: number) {
+    const timeoutRef = useRef<number | undefined>(undefined);
 
-  const debouncedFn = useCallback(
-    (...args) => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+    const debouncedFn = useCallback(
+        (...args: any) => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
 
-      timeoutRef.current = setTimeout(() => {
-        callback(...args);
-      }, delay);
-    },
-    [callback, delay]
-  );
+            timeoutRef.current = setTimeout(() => {
+                callback(...args);
+            }, delay);
+        },
+        [callback, delay]
+    );
 
-  useEffect(() => {
-    return () => clearTimeout(timeoutRef.current);
-  }, []);
+    useEffect(() => {
+        return () => clearTimeout(timeoutRef.current);
+    }, []);
 
-  return debouncedFn;
+    return debouncedFn;
 }
