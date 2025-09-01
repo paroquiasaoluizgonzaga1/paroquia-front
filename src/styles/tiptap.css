@@ -1,0 +1,123 @@
+/* Estilos para o editor Tiptap */
+.ProseMirror {
+  outline: none;
+  min-height: 200px;
+  padding: 0;
+}
+
+/* Forçar a exibição dos marcadores das listas */
+.ProseMirror ul,
+.ProseMirror ol {
+  list-style: inherit !important;
+}
+
+.ProseMirror ul {
+  list-style-type: disc !important;
+}
+
+.ProseMirror ol {
+  list-style-type: decimal !important;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.ProseMirror h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0.67em 0;
+}
+
+.ProseMirror h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0.75em 0;
+}
+
+.ProseMirror h3 {
+  font-size: 1.17em;
+  font-weight: bold;
+  margin: 0.83em 0;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+  padding-left: 1.5em;
+  margin: 1em 0;
+  list-style-position: outside;
+}
+
+.ProseMirror ul {
+  list-style-type: disc;
+}
+
+.ProseMirror ol {
+  list-style-type: decimal;
+}
+
+.ProseMirror li {
+  margin: 0.5em 0;
+  display: list-item;
+}
+
+.ProseMirror blockquote {
+  border-left: 3px solid #ddd;
+  margin: 1em 0;
+  padding-left: 1em;
+  font-style: italic;
+}
+
+.ProseMirror a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.ProseMirror img {
+  max-width: 100%;
+  height: auto;
+  margin: 1em 0;
+  border-radius: 0.5rem;
+}
+
+.ProseMirror strong {
+  font-weight: bold;
+}
+
+.ProseMirror em {
+  font-style: italic;
+}
+
+.ProseMirror s {
+  text-decoration: line-through;
+}
+
+/* Estilos para o modo escuro */
+[data-theme="dark"] .ProseMirror {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .ProseMirror blockquote {
+  border-left-color: #4a5568;
+}
+
+[data-theme="dark"] .ProseMirror a {
+  color: #63b3ed;
+}
+
+/* Garantir que os marcadores das listas sejam visíveis no modo escuro */
+[data-theme="dark"] .ProseMirror ul {
+  list-style-type: disc;
+}
+
+[data-theme="dark"] .ProseMirror ol {
+  list-style-type: decimal;
+}
+
+[data-theme="dark"] .ProseMirror li {
+  color: #e2e8f0;
+}
