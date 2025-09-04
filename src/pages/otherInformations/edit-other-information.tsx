@@ -18,7 +18,7 @@ import type { AxiosError } from 'axios';
 import type { IOtherSchedule } from '@/interfaces/IOtherSchedule';
 import { OtherScheduleTypes } from '@/constants/OtherScheduleTypes';
 
-interface IEditGroupOrServiceDTO {
+interface IEditOtherInformationDTO {
     title: string;
     content: string;
     type: number;
@@ -33,15 +33,15 @@ const editFormSchema = zod.object({
     type: zod.number(),
 });
 
-export function EditGroupOrService() {
+export function EditOtherInformation() {
     const navigate = useNavigate();
     const { id } = useParams();
 
-    const { register, handleSubmit, formState, reset, setValue, watch } = useForm<IEditGroupOrServiceDTO>({
+    const { register, handleSubmit, formState, reset, setValue, watch } = useForm<IEditOtherInformationDTO>({
         resolver: zodResolver(editFormSchema),
         defaultValues: {
             title: '',
-            type: OtherScheduleTypes.GroupsAndServices,
+            type: OtherScheduleTypes.OtherInformations,
             content: '',
         },
     });
@@ -68,7 +68,7 @@ export function EditGroupOrService() {
         fetchNews();
     }, [id, reset]);
 
-    const handleUpdate: SubmitHandler<IEditGroupOrServiceDTO> = async (data) => {
+    const handleUpdate: SubmitHandler<IEditOtherInformationDTO> = async (data) => {
         if (!id) return;
         try {
             const { title, content, type } = data;
@@ -79,8 +79,8 @@ export function EditGroupOrService() {
             if (content) form.append('content', content);
 
             await api.putForm(`otherSchedules/${id}`, form);
-            toaster.success({ title: 'Grupo ou serviço atualizado com sucesso' });
-            navigate('/pastorais-grupos-e-servicos');
+            toaster.success({ title: 'Informação atualizada com sucesso' });
+            navigate('/outras-informacoes');
             reset();
         } catch (error: unknown) {
             handleError(error as AxiosError<IApiError>);
@@ -89,20 +89,20 @@ export function EditGroupOrService() {
 
     const handleCancel = () => {
         reset();
-        navigate('/pastorais-grupos-e-servicos');
+        navigate('/outras-informacoes');
     };
 
     return (
         <DefaultPage>
             <CustomBreadcrumb
-                current={'Editar grupo ou serviço'}
+                current={'Editar informação'}
                 items={[
                     { title: 'Home', link: '/' },
-                    { title: 'Pastorais, grupos e serviços', link: '/pastorais-grupos-e-servicos' },
+                    { title: 'Outras informações', link: '/outras-informacoes' },
                 ]}
             />
             <PageHeading icon={<LuMegaphone />} my={6}>
-                Editar grupo ou serviço
+                Editar informação
             </PageHeading>
             <Stack
                 maxW={'800px'}
@@ -122,7 +122,7 @@ export function EditGroupOrService() {
                         onChange={(value) => setValue('content', value)}
                         label="Descrição"
                         errorText={errors?.content?.message}
-                        placeholder="Digite o conteúdo do grupo ou serviço aqui..."
+                        placeholder="Digite o conteúdo da informação aqui..."
                     />
                 )}
                 <HStack w="full" justify={'flex-end'}>

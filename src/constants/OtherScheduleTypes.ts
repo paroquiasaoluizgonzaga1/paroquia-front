@@ -3,4 +3,5 @@ export const OtherScheduleTypes = {
     GroupsAndServices: 1,
     Sacrament: 2,
     TransparencyPortal: 3,
+    OtherInformations: 4,
 } as const;

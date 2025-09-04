@@ -18,11 +18,12 @@ import { AddMassLocation } from './pages/massLocations/add-mass-location';
 import { EditMassLocation } from './pages/massLocations/edit-mass-location';
 import { TransparencyPortal } from './pages/transparencyPortal/transparency-portal';
 import { SacramentsList } from './pages/sacraments/sacraments-list';
-import { GroupsAndServicesList } from './pages/groupsAndServices/groups-and-services-list';
 import { AddSacrament } from './pages/sacraments/add-sacrament';
 import { EditSacrament } from './pages/sacraments/edit-sacrament';
-import { EditGroupOrService } from './pages/groupsAndServices/edit-group-or-service';
-import { AddGroupOrService } from './pages/groupsAndServices/add-group-or-service';
+import { AddOtherInformation } from './pages/otherInformations/add-other-information';
+import { OtherInformationsList } from './pages/otherInformations/other-informations';
+import { EditOtherInformation } from './pages/otherInformations/edit-other-information';
+import { GroupsAndServices } from './pages/groupsAndServices/groups-and-services';
 
 export function Router() {
     return (
@@ -48,15 +49,16 @@ export function Router() {
                     <Route path="" element={<MassLocationsList />} />
                 </Route>
                 <Route path="portal-de-transparencia" element={<TransparencyPortal />} />
+                <Route path="pastorais-grupos-e-servicos" element={<GroupsAndServices />} />
                 <Route path="sacramentos">
                     <Route path="" element={<SacramentsList />} />
                     <Route path="novo" element={<AddSacrament />} />
                     <Route path="editar/:id" element={<EditSacrament />} />
                 </Route>
-                <Route path="pastorais-grupos-e-servicos">
-                    <Route path="" element={<GroupsAndServicesList />} />
-                    <Route path="novo" element={<AddGroupOrService />} />
-                    <Route path="editar/:id" element={<EditGroupOrService />} />
+                <Route path="outras-informacoes">
+                    <Route path="" element={<OtherInformationsList />} />
+                    <Route path="novo" element={<AddOtherInformation />} />
+                    <Route path="editar/:id" element={<EditOtherInformation />} />
                 </Route>
             </Route>
             <Route path="login" element={<Login />} />

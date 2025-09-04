@@ -83,6 +83,7 @@ export function Home() {
             '/sacramentos': 'Gerencie sacramentos e eventos religiosos',
             '/pastorais-grupos-e-servicos': 'Organize pastorais, grupos e serviços',
             '/admin/membros': 'Gerencie membros da paróquia',
+            '/outras-informacoes': 'Gerencie outras informações da paróquia',
         };
         return descriptions[href] || 'Acesse esta seção do sistema';
     };
@@ -95,6 +96,7 @@ export function Home() {
             '/sacramentos': <PiCross size={24} />,
             '/pastorais-grupos-e-servicos': <PiSquaresFour size={24} />,
             '/admin/membros': <PiUsers size={24} />,
+            '/outras-informacoes': <PiSquaresFour size={24} />,
         };
         return icons[href] || <HiOutlineHome size={24} />;
     };

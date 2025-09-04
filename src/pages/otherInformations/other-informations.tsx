@@ -19,7 +19,7 @@ import type { IOtherSchedule } from '@/interfaces/IOtherSchedule';
 import { EmptyList } from '@/components/EmptyList';
 import { OtherSchedulesCard } from '@/components/OtherSchedules/other-schedules-card';
 
-export function GroupsAndServicesList() {
+export function OtherInformationsList() {
     const isWideVersion = useBreakpointValue({
         base: false,
         md: true,
@@ -28,22 +28,22 @@ export function GroupsAndServicesList() {
     const navigate = useNavigate();
 
     const [isLoaded, setIsLoaded] = useState(false);
-    const [groupsAndServicesList, setGroupsAndServicesList] = useState<IOtherSchedule[]>([]);
+    const [otherInformationsList, setOtherInformationsList] = useState<IOtherSchedule[]>([]);
     const [filters, setFilters] = useState<IPageFilter>({
         pageIndex: 0,
         pageSize: 10,
     });
 
-    const fetchGroupsAndServices = useCallback(() => {
+    const fetchOtherInformations = useCallback(() => {
         setIsLoaded(false);
 
         api.get<IOtherSchedule[]>('otherSchedules', {
             params: {
                 ...filters,
-                type: OtherScheduleTypes.GroupsAndServices,
+                type: OtherScheduleTypes.OtherInformations,
             },
         })
-            .then((resp) => setGroupsAndServicesList(resp.data))
+            .then((resp) => setOtherInformationsList(resp.data))
             .catch((err) => handleError(err))
             .finally(() => setIsLoaded(true));
     }, [filters]);
@@ -78,28 +78,28 @@ export function GroupsAndServicesList() {
     };
 
     const filter = () => {
-        if (filters.pageIndex == 0) fetchGroupsAndServices();
+        if (filters.pageIndex == 0) fetchOtherInformations();
         else setPageIndex(0);
     };
 
-    const addGroupsAndServices = () => {
-        navigate('/pastorais-grupos-e-servicos/novo');
+    const addOtherInformation = () => {
+        navigate('/outras-informacoes/novo');
     };
 
-    const editGroupsAndServices = (id: string) => {
-        navigate(`/pastorais-grupos-e-servicos/editar/${id}`);
+    const editOtherInformation = (id: string) => {
+        navigate(`/outras-informacoes/editar/${id}`);
     };
 
     useEffect(() => {
-        fetchGroupsAndServices();
-    }, [fetchGroupsAndServices]);
+        fetchOtherInformations();
+    }, [fetchOtherInformations]);
 
     return (
         <DefaultPage>
-            <CustomBreadcrumb items={[{ title: 'Home', link: '/' }]} current="Pastorais, grupos e serviços" />
+            <CustomBreadcrumb items={[{ title: 'Home', link: '/' }]} current="Outras informações" />
             <HStack my={6} justify={'space-between'}>
-                <PageHeading icon={<PiSquaresFourFill />}>Pastorais, grupos e serviços</PageHeading>
-                <Button colorPalette={'brand'} onClick={addGroupsAndServices}>
+                <PageHeading icon={<PiSquaresFourFill />}>Outras informações</PageHeading>
+                <Button colorPalette={'brand'} onClick={addOtherInformation}>
                     <Icon fontSize={'sm'}>
                         <LuCirclePlus />
                     </Icon>
@@ -109,21 +109,21 @@ export function GroupsAndServicesList() {
             {isWideVersion && (
                 <OtherSchedulesTable
                     isLoaded={isLoaded}
-                    otherSchedulesList={groupsAndServicesList}
+                    otherSchedulesList={otherInformationsList}
                     deleteMessage="o registro"
                     deleteAction={handleDelete}
-                    editAction={editGroupsAndServices}
+                    editAction={editOtherInformation}
                 />
             )}
             {!isWideVersion && isLoaded && (
                 <Stack mt={8} gap={4}>
-                    <For each={groupsAndServicesList} fallback={<EmptyList />}>
-                        {(groupsAndServices) => (
+                    <For each={otherInformationsList} fallback={<EmptyList />}>
+                        {(otherInformation) => (
                             <OtherSchedulesCard
-                                key={groupsAndServices.id}
-                                otherSchedule={groupsAndServices}
+                                key={otherInformation.id}
+                                otherSchedule={otherInformation}
                                 deleteAction={handleDelete}
-                                editAction={editGroupsAndServices}
+                                editAction={editOtherInformation}
                             />
                         )}
                     </For>

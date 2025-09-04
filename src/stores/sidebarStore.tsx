@@ -75,6 +75,13 @@ const menuItems: IMenu[] = [
         iconActive: <PiSquaresFourFill />,
         roles: ['admin', 'manager'],
     },
+    {
+        title: 'Outras informações',
+        href: '/outras-informacoes',
+        icon: <PiSquaresFour />,
+        iconActive: <PiSquaresFourFill />,
+        roles: ['admin', 'manager'],
+    },
 ];
 
 export const sidebarStore = create<ISidebarState>((set) => ({

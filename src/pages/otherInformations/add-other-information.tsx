@@ -16,7 +16,7 @@ import { toaster } from '@/components/ui/toaster';
 import type { AxiosError } from 'axios';
 import { OtherScheduleTypes } from '@/constants/OtherScheduleTypes';
 
-interface IAddGroupOrServiceDTO {
+interface IAddOtherInformationDTO {
     title: string;
     content: string;
     type: number;
@@ -31,14 +31,14 @@ const createFormSchema = zod.object({
     type: zod.number(),
 });
 
-export function AddGroupOrService() {
+export function AddOtherInformation() {
     const navigate = useNavigate();
 
-    const { register, handleSubmit, formState, reset, setValue, watch } = useForm<IAddGroupOrServiceDTO>({
+    const { register, handleSubmit, formState, reset, setValue, watch } = useForm<IAddOtherInformationDTO>({
         resolver: zodResolver(createFormSchema),
         defaultValues: {
             title: '',
-            type: OtherScheduleTypes.GroupsAndServices,
+            type: OtherScheduleTypes.OtherInformations,
             content: '',
         },
     });
@@ -47,7 +47,7 @@ export function AddGroupOrService() {
 
     const content = watch('content');
 
-    const handleCreate: SubmitHandler<IAddGroupOrServiceDTO> = async (data) => {
+    const handleCreate: SubmitHandler<IAddOtherInformationDTO> = async (data) => {
         try {
             const { title, content, type } = data;
             const form = new FormData();
@@ -58,8 +58,8 @@ export function AddGroupOrService() {
             if (content) form.append('content', content);
 
             await api.postForm('otherSchedules', form);
-            toaster.success({ title: 'Grupo ou serviço criado com sucesso' });
-            navigate('/pastorais-grupos-e-servicos');
+            toaster.success({ title: 'Informação criada com sucesso' });
+            navigate('/outras-informacoes');
             reset();
         } catch (error: unknown) {
             handleError(error as AxiosError<IApiError>);
@@ -68,20 +68,20 @@ export function AddGroupOrService() {
 
     const handleCancel = () => {
         reset();
-        navigate('/pastorais-grupos-e-servicos');
+        navigate('/outras-informacoes');
     };
 
     return (
         <DefaultPage>
             <CustomBreadcrumb
-                current={'Novo grupo ou serviço'}
+                current={'Nova informação'}
                 items={[
                     { title: 'Home', link: '/' },
-                    { title: 'Pastorais, grupos e serviços', link: '/pastorais-grupos-e-servicos' },
+                    { title: 'Outras informações', link: '/outras-informacoes' },
                 ]}
             />
             <PageHeading icon={<LuMegaphone />} my={6}>
-                Novo grupo ou serviço
+                Nova informação
             </PageHeading>
             <Stack
                 maxW={'800px'}
@@ -100,7 +100,7 @@ export function AddGroupOrService() {
                     onChange={(value) => setValue('content', value)}
                     label="Descrição"
                     errorText={errors?.content?.message}
-                    placeholder="Digite o conteúdo do grupo ou serviço aqui..."
+                    placeholder="Digite o conteúdo da informação aqui..."
                 />
                 <HStack w="full" justify={'flex-end'}>
                     <Button variant={'outline'} w="fit-content" px={6} onClick={handleCancel}>
