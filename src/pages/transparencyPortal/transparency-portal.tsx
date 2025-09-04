@@ -47,7 +47,7 @@ export function TransparencyPortal() {
 
             form.append('content', content);
             form.append('type', OtherScheduleTypes.TransparencyPortal.toString());
-            form.append('title', 'Portal de transparência');
+            form.append('title', 'Portal da transparência, Trabalhos do Padre, Administração e Financeiro');
 
             await api.putForm(`otherSchedules/${transparencyPortal?.id}`, form);
             toaster.success({ title: 'Portal de transparência atualizado com sucesso' });
