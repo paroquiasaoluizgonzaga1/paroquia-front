@@ -274,7 +274,7 @@ const RichTextEditorBase: ForwardRefRenderFunction<HTMLDivElement, RichTextEdito
                         editor={editor}
                         style={{
                             fontSize: '16px',
-                            lineHeight: '1.6',
+                            lineHeight: '1.1',
                         }}
                     />
                 </Box>
