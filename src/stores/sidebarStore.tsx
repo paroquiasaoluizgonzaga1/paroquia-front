@@ -9,6 +9,8 @@ import {
     PiGlobeFill,
     PiMegaphone,
     PiMegaphoneFill,
+    PiNote,
+    PiNoteFill,
     PiSquaresFour,
     PiSquaresFourFill,
     PiUsers,
@@ -80,6 +82,13 @@ const menuItems: IMenu[] = [
         href: '/outras-informacoes',
         icon: <PiSquaresFour />,
         iconActive: <PiSquaresFourFill />,
+        roles: ['admin', 'manager'],
+    },
+    {
+        title: 'Obras e reformas',
+        href: '/obras-e-reformas',
+        icon: <PiNote />,
+        iconActive: <PiNoteFill />,
         roles: ['admin', 'manager'],
     },
 ];

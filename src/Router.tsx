@@ -24,6 +24,7 @@ import { AddOtherInformation } from './pages/otherInformations/add-other-informa
 import { OtherInformationsList } from './pages/otherInformations/other-informations';
 import { EditOtherInformation } from './pages/otherInformations/edit-other-information';
 import { GroupsAndServices } from './pages/groupsAndServices/groups-and-services';
+import { WorksAndRenovations } from './pages/worksAndRenovations/works-and-renovations';
 
 export function Router() {
     return (
@@ -50,6 +51,7 @@ export function Router() {
                 </Route>
                 <Route path="portal-de-transparencia" element={<TransparencyPortal />} />
                 <Route path="pastorais-grupos-e-servicos" element={<GroupsAndServices />} />
+                <Route path="obras-e-reformas" element={<WorksAndRenovations />} />
                 <Route path="sacramentos">
                     <Route path="" element={<SacramentsList />} />
                     <Route path="novo" element={<AddSacrament />} />
