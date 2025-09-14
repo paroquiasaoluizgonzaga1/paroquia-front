@@ -27,7 +27,7 @@ export function WorksAndRenovations() {
         const fetchWorksAndRenovations = async () => {
             try {
                 const response = await api.get<ITransparencyPortal>(
-                    `otherSchedules/first/${OtherScheduleTypes.GroupsAndServices}`
+                    `otherSchedules/first/${OtherScheduleTypes.WorksAndRenovations}`
                 );
                 setWorksAndRenovations(response.data);
                 setContent(response.data.content ?? '');
